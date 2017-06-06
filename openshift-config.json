@@ -1,0 +1,12 @@
+{
+	"apiVersion" : 'v1',
+	"context" : {
+		"cluster": 'master.rhsademo.net',
+		"namespace": 'mepley-test',
+		"user": 'mepley/master.rhsademo.net'
+	},
+	"user": {
+		"token": 'Tth9NdBNDaC5gmgsNk6YpSlTsO7h7ullNarwYpmegd0'
+	},
+	"cluster": 'master.rhsademo.net'
+}

@@ -1,0 +1,30 @@
+        {
+            "kind": "Service",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "postgresql-probot",
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "postgresql-ephemeral",
+                    "template": "postgresql-ephemeral-template"
+                },
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                }
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "postgresql",
+                        "protocol": "TCP",
+                        "port": 5432,
+                        "targetPort": 5432
+                    }
+                ],
+                "selector": {
+                    "name": "postgresql"
+                },
+                "type": "ClusterIP",
+                "sessionAffinity": "None"
+            }
+        }
