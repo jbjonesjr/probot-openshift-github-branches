@@ -1,0 +1,179 @@
+{
+    "apiVersion": "v1",
+    "kind": "DeploymentConfig",
+    "metadata": {
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        },
+        "creationTimestamp": "2017-06-08T07:18:32Z",
+        "generation": 5,
+        "labels": {
+            "app": "myphp",
+            "demophase": "statusquo",
+            "part": "frontend"
+        },
+        "name": "php",
+        "namespace": "mepley-devnation-federal-2017",
+        "resourceVersion": "9150323",
+        "selfLink": "/oapi/v1/namespaces/mepley-devnation-federal-2017/deploymentconfigs/php",
+        "uid": "adc4bb1e-4c1a-11e7-83f7-121b3566b20e"
+    },
+    "spec": {
+        "replicas": 1,
+        "selector": {
+            "app": "myphp",
+            "demophase": "statusquo",
+            "deploymentconfig": "php",
+            "part": "frontend"
+        },
+        "strategy": {
+            "resources": {},
+            "rollingParams": {
+                "intervalSeconds": 1,
+                "maxSurge": "25%",
+                "maxUnavailable": "25%",
+                "timeoutSeconds": 600,
+                "updatePeriodSeconds": 1
+            },
+            "type": "Rolling"
+        },
+        "template": {
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "myphp",
+                    "demophase": "statusquo",
+                    "deploymentconfig": "php",
+                    "part": "frontend"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "MYSQL_SERVICE_DATABASE",
+                                "value": "myphp"
+                            },
+                            {
+                                "name": "MYSQL_SERVICE_HOST",
+                                "value": "mysql.mepley-devnation-federal-2017.svc.cluster.local"
+                            },
+                            {
+                                "name": "MYSQL_SERVICE_PASSWORD",
+                                "value": "myphp"
+                            },
+                            {
+                                "name": "MYSQL_SERVICE_PORT",
+                                "value": "3306"
+                            },
+                            {
+                                "name": "MYSQL_SERVICE_USERNAME",
+                                "value": "myphp"
+                            }
+                        ],
+                        "image": "172.30.87.166:5000/mepley-devnation-federal-2017/php@sha256:560a903ed37247abc388f7ab6e929748f32c27a471fc62aca1eb95bf2e166207",
+                        "imagePullPolicy": "Always",
+                        "livenessProbe": {
+                            "failureThreshold": 4,
+                            "httpGet": {
+                                "path": "/",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 4
+                        },
+                        "name": "php",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 4,
+                            "httpGet": {
+                                "path": "/",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 4
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "400m"
+                            },
+                            "requests": {
+                                "cpu": "200m"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log"
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Always",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+            }
+        },
+        "test": false,
+        "triggers": [
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "imageChangeParams": {
+                    "automatic": true,
+                    "containerNames": [
+                        "php"
+                    ],
+                    "from": {
+                        "kind": "ImageStreamTag",
+                        "name": "php:latest",
+                        "namespace": "mepley-devnation-federal-2017"
+                    },
+                    "lastTriggeredImage": "172.30.87.166:5000/mepley-devnation-federal-2017/php@sha256:560a903ed37247abc388f7ab6e929748f32c27a471fc62aca1eb95bf2e166207"
+                },
+                "type": "ImageChange"
+            }
+        ]
+    },
+    "status": {
+        "availableReplicas": 1,
+        "conditions": [
+            {
+                "lastTransitionTime": "2017-06-08T07:18:56Z",
+                "message": "Deployment config has minimum availability.",
+                "status": "True",
+                "type": "Available"
+            },
+            {
+                "lastTransitionTime": "2017-06-08T07:28:36Z",
+                "message": "Replication controller \"php-2\" is progressing",
+                "reason": "ReplicationControllerUpdated",
+                "status": "True",
+                "type": "Progressing"
+            }
+        ],
+        "details": {
+            "causes": [
+                {
+                    "type": "ConfigChange"
+                }
+            ],
+            "message": "config change"
+        },
+        "latestVersion": 2,
+        "observedGeneration": 5,
+        "replicas": 2,
+        "unavailableReplicas": 1,
+        "updatedReplicas": 1
+    }
+}

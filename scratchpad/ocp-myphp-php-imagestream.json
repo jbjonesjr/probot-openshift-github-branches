@@ -1,0 +1,38 @@
+{
+    "apiVersion": "v1",
+    "kind": "ImageStream",
+    "metadata": {
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        },
+        "creationTimestamp": "2017-06-08T08:20:20Z",
+        "generation": 1,
+        "labels": {
+            "app": "myphp",
+            "demophase": "statusquo",
+            "part": "frontend"
+        },
+        "name": "php",
+        "namespace": "mepley-devnation-federal-2017",
+        "resourceVersion": "9152983",
+        "selfLink": "/oapi/v1/namespaces/mepley-devnation-federal-2017/imagestreams/php",
+        "uid": "4ffd04d8-4c23-11e7-83f7-121b3566b20e"
+    },
+    "spec": {},
+    "status": {
+        "dockerImageRepository": "172.30.87.166:5000/mepley-devnation-federal-2017/php",
+        "tags": [
+            {
+                "items": [
+                    {
+                        "created": "2017-06-08T08:20:39Z",
+                        "dockerImageReference": "172.30.87.166:5000/mepley-devnation-federal-2017/php@sha256:985d54d20882f9176b33fa46e4fbb42132562cd6e70286365aa512b442b92ba6",
+                        "generation": 1,
+                        "image": "sha256:985d54d20882f9176b33fa46e4fbb42132562cd6e70286365aa512b442b92ba6"
+                    }
+                ],
+                "tag": "latest"
+            }
+        ]
+    }
+}

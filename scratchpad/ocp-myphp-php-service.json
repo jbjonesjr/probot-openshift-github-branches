@@ -1,0 +1,43 @@
+{
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp",
+            "service.alpha.openshift.io/dependencies": "[ { \"name\" : \"mysql\" , \"kind\" : \"Service\"  } ]"
+        },
+        "creationTimestamp": "2017-06-08T07:18:32Z",
+        "labels": {
+            "app": "myphp",
+            "demophase": "statusquo",
+            "part": "frontend"
+        },
+        "name": "php",
+        "namespace": "mepley-devnation-federal-2017",
+        "resourceVersion": "9150026",
+        "selfLink": "/api/v1/namespaces/mepley-devnation-federal-2017/services/php",
+        "uid": "adc99eff-4c1a-11e7-83f7-121b3566b20e"
+    },
+    "spec": {
+        "clusterIP": "172.30.230.43",
+        "ports": [
+            {
+                "name": "8080-tcp",
+                "port": 8080,
+                "protocol": "TCP",
+                "targetPort": 8080
+            }
+        ],
+        "selector": {
+            "app": "myphp",
+            "demophase": "statusquo",
+            "deploymentconfig": "php",
+            "part": "frontend"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+    },
+    "status": {
+        "loadBalancer": {}
+    }
+}

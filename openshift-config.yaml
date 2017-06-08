@@ -10,8 +10,13 @@ contexts:
     namespace: mepley-test
     user: mepley/master-rhsademo-net:443
   name: mepley-test/master-rhsademo-net:443/mepley
-current-context: mepley-test/master-rhsademo-net:443/mepley
+- context:
+    cluster: master-rhsademo-net:443
+    namespace: mepley-devnation-federal-2017
+    user: mepley/master-rhsademo-net:443
+  name: mepley-devnation-federal-2017/master-rhsademo-net:443/mepley
+current-context: mepley-devnation-federal-2017/master-rhsademo-net:443/mepley
 users:
 - name: mepley/master-rhsademo-net:443
   user:
-    token: XpQ5ywvcG-YEavIzD1YgnxYb4sE4oyfnKRETz-YKtbw
+    token: Skxsg4IO9hAg-b-F7GzS5T3I70i39D1CYyHeZ9yInfg

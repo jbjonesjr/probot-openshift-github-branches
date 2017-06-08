@@ -1,0 +1,75 @@
+{
+    "apiVersion": "v1",
+    "kind": "BuildConfig",
+    "metadata": {
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        },
+        "creationTimestamp": "2017-06-08T07:18:32Z",
+        "labels": {
+            "app": "myphp",
+            "demophase": "statusquo",
+            "part": "frontend"
+        },
+        "name": "php",
+        "namespace": "mepley-devnation-federal-2017",
+        "resourceVersion": "9149763",
+        "selfLink": "/oapi/v1/namespaces/mepley-devnation-federal-2017/buildconfigs/php",
+        "uid": "adc186a2-4c1a-11e7-83f7-121b3566b20e"
+    },
+    "spec": {
+        "nodeSelector": null,
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "php:latest"
+            }
+        },
+        "postCommit": {},
+        "resources": {},
+        "runPolicy": "Serial",
+        "source": {
+            "git": {
+                "ref": "devnation-probot",
+                "uri": "https://github.com/michaelepley/phpmysqldemo.git"
+            },
+            "type": "Git"
+        },
+        "strategy": {
+            "sourceStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "php:5.6",
+                    "namespace": "openshift"
+                }
+            },
+            "type": "Source"
+        },
+        "triggers": [
+            {
+                "github": {
+                    "secret": "heaZCd5_o5fotuN9eUGf"
+                },
+                "type": "GitHub"
+            },
+            {
+                "generic": {
+                    "secret": "NJbNgdk-5lyViVYdA1Nh"
+                },
+                "type": "Generic"
+            },
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "imageChange": {
+                    "lastTriggeredImageID": "registry.access.redhat.com/rhscl/php-56-rhel7@sha256:a972b1dfb92ea372e63c650fcea22783d717a1285f08331645fb9c232cfe95cf"
+                },
+                "type": "ImageChange"
+            }
+        ]
+    },
+    "status": {
+        "lastVersion": 1
+    }
+}
