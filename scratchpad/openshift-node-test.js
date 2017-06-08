@@ -11,7 +11,7 @@ console.log(ocp_myphp_service);
 // RestClient.deploymentconfigs.create(dc-template,{/*params??*/})
 
 // / {configLocation:'openshift-config.json'}
-openshiftConfigLoader({configLocation:'./.openshift/openshift-config.yaml'}).then(config => {
+openshiftConfigLoader({configLocation:'./.openshift/config.yaml'}).then(config => {
   openshiftRestClient(config).then(client => {
     // Use the client object to find a list of projects, for example
     console.log('starting project find');
