@@ -1,0 +1,50 @@
+{
+    "apiVersion": "v1",
+    "kind": "Route",
+    "metadata": {
+        "creationTimestamp": "2017-06-08T13:23:40Z",
+        "labels": {
+            "app": "myphp"
+        },
+        "name": "devnation-visitors",
+        "namespace": "mepley-devnation-federal-2017",
+        "resourceVersion": "9168245",
+        "selfLink": "/oapi/v1/namespaces/mepley-devnation-federal-2017/routes/devnation-visitors",
+        "uid": "afbb47de-4c4d-11e7-83f7-121b3566b20e"
+    },
+    "spec": {
+        "alternateBackends": [
+            {
+                "kind": "Service",
+                "name": "php-pullrequest-1221",
+                "weight": 10
+            }
+        ],
+        "host": "devnation-visitors.apps.rhsademo.net",
+        "port": {
+            "targetPort": "8080-tcp"
+        },
+        "to": {
+            "kind": "Service",
+            "name": "php",
+            "weight": 90
+        },
+        "wildcardPolicy": "None"
+    },
+    "status": {
+        "ingress": [
+            {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2017-06-08T13:23:40Z",
+                        "status": "True",
+                        "type": "Admitted"
+                    }
+                ],
+                "host": "devnation-visitors.apps.rhsademo.net",
+                "routerName": "router",
+                "wildcardPolicy": "None"
+            }
+        ]
+    }
+}
