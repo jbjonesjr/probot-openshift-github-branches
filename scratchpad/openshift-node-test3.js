@@ -75,7 +75,7 @@ delete ocp_myphp_route.metadata.creationTimestamp;
 delete ocp_myphp_route.status;
 
 
-RestClient.deploymentconfigs.create(dc-template,{/*params??*/})
+//restClient.deploymentconfigs.create(dc-template,{/*params??*/})
 
 // / {configLocation:'openshift-config.json'}
 openshiftConfigLoader({configLocation:'./.openshift/config.yaml'}).then(config => {
