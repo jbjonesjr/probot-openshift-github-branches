@@ -12,3 +12,6 @@ npm install --save
 
 
 npm start
+
+
+Use GitHub >> Settings >> Git Hub Apps >> Probot app >> WebHook URL >> "mepleyprobot.localtunnel.me"  or jbjonesjropenshift.localtunnel.me (secret: openshiftprobotbranches )
