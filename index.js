@@ -28,7 +28,7 @@ module.exports = robot => {
   async function status(event, context) {
     console.log('status caught');
     event.payload.ref = event.payload.sha;
-    githubConn.status_for_commit(context.github, event);
+    githubConn.status_for_commit(event, context);
   }
 
 /*
@@ -42,17 +42,7 @@ Async function pr_commit_push(event, context) {
   }
 
   async function deploy(event, context) {
-    const ref = event.payload.deployment.ref;
-    const commitRepo = event.payload.repository;
-
-    console.log('should be calling openshift to spin a new version');
-    console.log(event);
-    console.log('envrionment url', 'https://' + event.payload.deployment.ref + '-openshift.com');
-
     openshiftConn.deploy(event);
-    context.github.repos.createDeploymentStatus({
-      owner:commitRepo.owner.login,
-      repo:commitRepo.name,
-      id:event.payload.deployment.id, state:'pending', environment_url:'https://' + ref.substring(1) + '-openshift.com'});
+    githubConn.deploy(event, context);
   }
 };
