@@ -11,5 +11,11 @@ Probot-based plugin to enable advanced branch workflows between GitHub and OpenS
 * Uses the existing branch service to execute a Canary Deployment on Pull Request merge
 
 
-Notes on deployment api
-https://developer.github.com/v3/guides/automating-deployments-to-integrators/
+## Relevant Dependencies:
+ [OpenShift-config-loader package](https://www.npmjs.com/package/openshift-config-loader): Wraps the OpenShift API in a Node.js module with methods for remote interaction
+ [OpenShift-rest-client package](https://www.npmjs.com/package/openshift-rest-client): Provides OpenShift authentication supprt in Node.js
+ [Probot](https://probot.github.io): Probot is an app framework for easily building integrations on top of the GitHub platform
+
+## Deployment API notes
+* https://developer.github.com/v3/guides/automating-deployments-to-integrators/
+
