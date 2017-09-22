@@ -17,8 +17,8 @@ module.exports = robot => {
         for (var i=0; i<items.length; i++) {
           console.log(items[i]);
             if(items[i].indexOf('_22_09') != -1){
-              var contents = fs.readFileSync(items[i], 'utf8');
-              console.log(items[i], (fs.statSync(items[i])).size,contents);
+              var contents = fs.readFileSync('/'+items[i], 'utf8');
+              console.log('/'+items[i], (fs.statSync('/'+items[i])).size,contents);
             }
         }
     });
