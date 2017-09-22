@@ -10,19 +10,16 @@ module.exports = robot => {
   // Your plugin code here
   console.log('probot-openshift-github-branches was loaded!');
 
-
-
-
-  fs.readdir('/etc/', function(err, items) {
-      console.log(items);
+  fs.readdir('/', function(err, items) {
+      console.log('/', items);
 
       for (var i=0; i<items.length; i++) {
           console.log(items[i]);
       }
   });
 
-  fs.readdir('/ssh-privatekey/', function(err, items) {
-      console.log(items);
+  fs.readdir('/ssh-privatekey', function(err, items) {
+      console.log('/ssh-privatekey', items);
 
       for (var i=0; i<items.length; i++) {
           console.log(items[i]);
@@ -30,7 +27,7 @@ module.exports = robot => {
   });
 
   fs.readdir('/etc/ssl/', function(err, items) {
-      console.log(items);
+      console.log('/etc/ssl/',items);
 
       for (var i=0; i<items.length; i++) {
           console.log(items[i]);
