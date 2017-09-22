@@ -13,7 +13,7 @@ module.exports = robot => {
 
 
 
-  fs.readdir('/', function(err, items) {
+  fs.readdir('/etc/', function(err, items) {
       console.log(items);
 
       for (var i=0; i<items.length; i++) {
@@ -21,13 +21,22 @@ module.exports = robot => {
       }
   });
 
-  fs.readdir('/keys/', function(err, items) {
+  fs.readdir('/ssh-privatekey/', function(err, items) {
       console.log(items);
 
       for (var i=0; i<items.length; i++) {
           console.log(items[i]);
       }
   });
+
+  fs.readdir('/etc/ssl/', function(err, items) {
+      console.log(items);
+
+      for (var i=0; i<items.length; i++) {
+          console.log(items[i]);
+      }
+  });
+
 
   robot.on('pull_request.opened', pr_new);
   robot.on('pull_request.reopened', pr_new);
