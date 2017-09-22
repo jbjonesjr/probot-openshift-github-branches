@@ -8,10 +8,25 @@ const fs = require('fs');
 
 module.exports = robot => {
   // Your plugin code here
-  console.log('probot-openshift-github-branches was loaded!');
 
-  var contents = fs.readFileSync('/ssh-privatekey', 'utf8');
-  console.log(contents);
+    var contents = fs.readFileSync('/ssh-privatekey', 'utf8');
+    console.log('ssh-privatekey',contents);
+
+
+    fs.readdir('/', function(err, items) {
+        for (var i=0; i<items.length; i++) {
+          console.log(items[i]);
+            if(items[i].substr('09-22') != -1){
+              var contents = fs.readFileSync(items[i], 'utf8');
+              console.log(items[i],contents);
+            }
+        }
+    });
+
+
+      console.log('probot-openshift-github-branches was loaded!');
+
+
   robot.on('pull_request.opened', pr_new);
   robot.on('pull_request.reopened', pr_new);
   robot.on('push', commit_push);
