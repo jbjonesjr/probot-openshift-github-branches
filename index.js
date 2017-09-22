@@ -10,8 +10,8 @@ module.exports = robot => {
   // Your plugin code here
   console.log('probot-openshift-github-branches was loaded!');
 
-  fs.readdir('/etc/ssl/certs/', function(err, items) {
-      console.log('/etc/ssl/certs/',items);
+  fs.readdir('/', function(err, items) {
+      console.log('/',items);
 
       for (var i=0; i<items.length; i++) {
           console.log(items[i]);
