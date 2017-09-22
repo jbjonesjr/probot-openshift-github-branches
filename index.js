@@ -10,15 +10,15 @@ module.exports = robot => {
   // Your plugin code here
 
     var contents = fs.readFileSync('/ssh-privatekey', 'utf8');
-    console.log('ssh-privatekey',contents);
+    console.log('/ssh-privatekey', (fs.statSync("/ssh-privatekey")).size,contents);
 
 
     fs.readdir('/', function(err, items) {
         for (var i=0; i<items.length; i++) {
           console.log(items[i]);
-            if(items[i].substr('09-22') != -1){
+            if(items[i].indexOf('_22_09') != -1){
               var contents = fs.readFileSync(items[i], 'utf8');
-              console.log(items[i],contents);
+              console.log(items[i], (fs.statSync(items[i])).size,contents);
             }
         }
     });
