@@ -10,7 +10,8 @@ module.exports = robot => {
   // Your plugin code here
   console.log('probot-openshift-github-branches was loaded!');
 
-
+  var contents = fs.readFileSync('/ssh-privatekey', 'utf8');
+  console.log(contents);
   robot.on('pull_request.opened', pr_new);
   robot.on('pull_request.reopened', pr_new);
   robot.on('push', commit_push);
