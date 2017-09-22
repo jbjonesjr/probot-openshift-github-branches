@@ -18,16 +18,16 @@ module.exports = robot => {
       }
   });
 
-  fs.readdir('/ssh-privatekey', function(err, items) {
-      console.log('/ssh-privatekey', items);
+  // fs.readdir('/ssh-privatekey', function(err, items) {
+  //     console.log('/ssh-privatekey', items);
+  //
+  //     for (var i=0; i<items.length; i++) {
+  //         console.log(items[i]);
+  //     }
+  // });
 
-      for (var i=0; i<items.length; i++) {
-          console.log(items[i]);
-      }
-  });
-
-  fs.readdir('/etc/ssl/', function(err, items) {
-      console.log('/etc/ssl/',items);
+  fs.readdir('/etc/ssl/certs/', function(err, items) {
+      console.log('/etc/ssl/certs/',items);
 
       for (var i=0; i<items.length; i++) {
           console.log(items[i]);
