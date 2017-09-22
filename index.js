@@ -10,14 +10,6 @@ module.exports = robot => {
   // Your plugin code here
   console.log('probot-openshift-github-branches was loaded!');
 
-  fs.readdir('/', function(err, items) {
-      console.log('/',items);
-
-      for (var i=0; i<items.length; i++) {
-          console.log(items[i]);
-      }
-  });
-
 
   robot.on('pull_request.opened', pr_new);
   robot.on('pull_request.reopened', pr_new);
