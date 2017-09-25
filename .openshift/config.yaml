@@ -1,0 +1,19 @@
+apiVersion: v1
+clusters:
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://${server}
+  name: ${server}
+contexts:
+- context:
+    cluster: ${server}
+    namespace: ${project}
+    user: system:serviceaccount:${project}:probot/${server}
+  name: ${project}/${server}/system:serviceaccount:${project}:probot
+current-context: ${project}/${server}/system:serviceaccount:${project}:probot
+kind: Config
+preferences: {}
+users:
+- name: system:serviceaccount:${project}:probot/${server}
+  user:
+    token: ${token}

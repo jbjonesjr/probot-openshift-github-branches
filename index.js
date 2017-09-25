@@ -1,5 +1,6 @@
 const githubConn = require('./lib/github.js');
 const openshiftConn = require('./lib/openshift.js');
+const oscon = require('./lib/os-configurator.js');
 
 
 module.exports = robot => {
@@ -11,9 +12,13 @@ module.exports = robot => {
   robot.on('pull_request.closed', pr_close);
   robot.on('deployment', deploy);
 
+  async function getOpenShiftConfig(context){
+    context.openshift = oscon.getClient(robot.config('./infra/openshift.yaml'));
+  }
+
   async function pr_new(context) {
     githubConn.pr_opened(context);
-    openshiftConn.pr_opened(context.event);
+    openshiftConn.pr_opened(context);
   }
 
   async function commit_push(context) {
