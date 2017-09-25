@@ -2,3 +2,6 @@ node_modules
 npm-debug.log
 *.pem
 .env
+.openshift
+.openshift/config.yaml
+.openshift/config-new.yaml

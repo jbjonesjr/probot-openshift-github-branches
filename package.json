@@ -1,7 +1,7 @@
 {
   "name": "probot-openshift-github-branches",
   "author": "@jbjonesjr",
-  "version": "0.4",
+  "version": "0.4.0",
   "description": "Probot-based plugin to enable advanced branch workflows between GitHub and OpenShift",
   "main": "index.js",
   "repository": {
@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/jbjonesjr/probot-openshift-github-branches#readme",
   "dependencies": {
-    "openshift-config-loader": "^0.4.0",
-    "openshift-rest-client": "^0.7.0",
+    "openshift-config-loader": "0.4.0",
+    "openshift-rest-client": "0.9.0",
     "probot": "^0.11.0",
     "probot-scheduler": "1.0.2",
     "token-substitute": "^1.2.0"
