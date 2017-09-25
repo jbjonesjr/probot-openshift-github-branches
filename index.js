@@ -27,7 +27,7 @@ module.exports = robot => {
 
   async function status(context) {
     robot.log('status caught');
-    context.event.payload.ref = context.event.payload.sha;
+    context.payload.ref = context.payload.sha;
     githubConn.status_for_commit(context);
   }
 
