@@ -17,6 +17,7 @@ module.exports = robot => {
   }
 
   async function pr_new(context) {
+    await getOpenShiftConfig(context);
     githubConn.pr_opened(context);
     openshiftConn.pr_opened(context);
   }
