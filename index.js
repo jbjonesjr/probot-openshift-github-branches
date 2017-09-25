@@ -1,6 +1,7 @@
 const githubConn = require('./lib/github.js');
 const openshiftConn = require('./lib/openshift.js');
 const oscon = require('./lib/os-configurator.js');
+const yaml = require('js-yaml');
 
 
 module.exports = robot => {
@@ -13,7 +14,20 @@ module.exports = robot => {
   robot.on('deployment', deploy);
 
   async function getOpenShiftConfig(context){
-    context.openshift = oscon.getClient(robot.config('./infra/openshift.yaml'));
+
+   let osconfig = {};
+   try {
+     const res = await context.github.repos.getContent(context.repo({path: 'infra/openshift.yaml'}));
+      osconfig = yaml.safeLoad(Buffer.from(res.data.content, 'base64').toString()) || {};
+   } catch (err) {
+     if (err.code === 404) {
+        osconfig = null;
+     } else {
+       throw err
+     }
+   }
+
+    context.openshift = await oscon.getClient(osconfig);
   }
 
   async function pr_new(context) {
