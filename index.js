@@ -3,6 +3,7 @@
 /* const yaml = require('js-yaml'); */
 const githubConn = require('./lib/github.js');
 const openshiftConn = require('./lib/openshift.js');
+const oscon = require('./lib/os-configurator.js');
 
 module.exports = robot => {
   // Your plugin code here
@@ -14,6 +15,10 @@ module.exports = robot => {
   robot.on('status', status);
   robot.on('pull_request.closed', pr_close);
   robot.on('deployment', deploy);
+
+  async function getOpenShiftConfig(context){
+    context.openshift = oscon.getClient(robot.config('./infra/openshift.yaml'));
+  }
 
   async function pr_new(event, context) {
      // Event.payload.pull_request.title
