@@ -1,0 +1,7 @@
+project: github-dev
+openshift-url: https://ec2-34-201-32-205.compute-1.amazonaws.com:8443
+openshift-server: ec2-34-201-32-205.compute-1.amazonaws.com:8443
+app-name: expr3ss
+registry-address: 172.30.167.198:5000
+openshift-app-domain: ocp.test-demo-dlt.com
+cluster-ip: 172.30.175.13
