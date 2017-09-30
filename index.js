@@ -3,7 +3,6 @@ const openshiftConn = require('./lib/openshift.js');
 const oscon = require('./lib/os-configurator.js');
 const yaml = require('js-yaml');
 
-
 module.exports = robot => {
   console.log('probot-openshift-github-branches was loaded!');
 
@@ -13,27 +12,49 @@ module.exports = robot => {
   robot.on('pull_request.closed', pr_close);
   robot.on('deployment', deploy);
 
-  async function getOpenShiftConfig(context){
 
-   let osconfig = {};
-   try {
-     const res = await context.github.repos.getContent(context.repo({path: 'infra/openshift.yaml'}));
-      osconfig = yaml.safeLoad(Buffer.from(res.data.content, 'base64').toString()) || {};
-   } catch (err) {
-     if (err.code === 404) {
-        osconfig = null;
-     } else {
-       throw err
-     }
-   }
+  function init(context){
+    context.loadYaml = async function(filename){
+      try {
+        const res = await this.github.repos.getContent(this.repo({path: filename}));
+        file = yaml.safeLoad(Buffer.from(res.data.content, 'base64').toString()) || {};
+      } catch (err) {
+        if (err.code === 404) {
+          file = null;
+        } else {
+          throw err
+        }
+      }
+      return file;
+    };
 
-    context.openshift = await oscon.getClient(osconfig);
+    context.loadJSON = async function(filename){
+      try {
+        const res = await this.github.repos.getContent(this.repo({path: filename}));
+        file = yaml.safeLoad(Buffer.from(res.data.content, 'base64').toString()) || {};
+      } catch (err) {
+        if (err.code === 404) {
+          file = null;
+        } else {
+          throw err
+        }
+      }
+      return file;
+    };
+  }
+
+  async function prepareOpenShiftClient(context){
+    context.openshift_props = await context.loadYaml('infra/openshift.yaml');
+    context.openshift = await oscon.getClient(context.openshift_props);
   }
 
   async function pr_new(context) {
-    await getOpenShiftConfig(context);
+    console.log('pr_new called');
+    init(context);
+    await prepareOpenShiftClient(context);
+
     githubConn.pr_opened(context);
-    openshiftConn.pr_opened(context);
+    await openshiftConn.pr_opened(context);
   }
 
   async function commit_push(context) {
