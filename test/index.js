@@ -42,4 +42,8 @@ describe('probot-openshift-branches ', () => {
   it('opens a new PR, creates OpenShift config', async () => {
     await robot.receive(prEvent);
   });
+
+  it('pushes a commit, waits for statuses to report', async () => {
+    await robot.receive( require('./fixtures/push'));
+  });
 });
